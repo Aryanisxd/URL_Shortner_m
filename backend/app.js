@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/api/create', (req, res) => {
     const {Url} = req.body;
-    console.log(Url);
+    console.log(Url); 
 
 
     res.send({nanoid: nanoid(7)});
