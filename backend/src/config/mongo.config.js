@@ -14,4 +14,3 @@ export default connectDB;
 
 
 
-const  db = moongos
