@@ -9,7 +9,7 @@ import { nanoid } from 'nanoid';
 
 //models
 import ShortUrl from './src/models/shorturl.model.js';
-
+import shortUrlRoute from './src/routes/shortUrl.route.js';
 
 const app = express();
 
@@ -24,20 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.post('/api/create', async (req, res) => {
-    const {url} = req.body;
-    const shortUrl = nanoid(7);
-    const newUrl = new ShortUrl({
-        fullUrl: url,
-        shortUrl: shortUrl,
-  
-    });
-    await newUrl.save();
-
-
-
-    res.send( nanoid(7));
-});
+app.use('/api/v1/create', shortUrlRoute);
 
 app.get('/:id' , async (req,res) => {
     const {id} = req.params;
@@ -82,7 +69,7 @@ async function connection (){
        await connectDB();
 
         app.listen(3001, () => {
-    console.log('Server is running on port  on https://localhost:3000');
+    console.log('Server is running on port  on https://localhost:3001');
 }
 );
         
